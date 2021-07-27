@@ -5,7 +5,7 @@ const connectDb = require('./db.js')    //import the connectDb function
 
 const express = require('express') //web framework for nodejs
 const app = express()
-const PORT = process.env.PORT   //setting the port
+const PORT = process.env.PORT || 8000   //setting the port
 
 connectDb();    //make the connection to the db when app starts
 
