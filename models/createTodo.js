@@ -2,16 +2,17 @@
 
 const Todo = require('../schemas/todo.js')
 
-const getAllTodos = (req, res) => {
-    Todo.find() //Schema.find() - returns all Todo's in the collection
-    .then( (res) => {
-        console.log('this is the response' ,res);
+const createTodo = (req, res) => {
+
+    Todo.create(req.body)
+    .then( (data) => {
+        console.log('\nTodo saved successfully. Check the database for record: \n' , data);
     })
     .catch( (err) => {
-        console.log('this is an error', err);
+        console.log('\nThere was an error creating the todo ...\n', err);
     })
 }
 
 module.exports = {
-    getAllTodos,
+    createTodo,
 }
