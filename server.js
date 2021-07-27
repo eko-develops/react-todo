@@ -7,10 +7,14 @@ const express = require('express') //web framework for nodejs
 const app = express()
 const PORT = process.env.PORT || 8000   //setting the port
 
+const { getAllTodos } = require('./models/getAllTodos')
+
 connectDb();    //make the connection to the db when app starts
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+
+    const allTodos = getAllTodos();
+  res.send(allTodos);
 })
 
 app.listen(PORT, () => {
