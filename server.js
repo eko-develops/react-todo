@@ -18,19 +18,30 @@ app.use(express.urlencoded({ extended: false }))
 
 const { getAllTodos } = require('./models/getAllTodos')
 const { createTodo } = require('./models/createTodo')
+const { deleteTodo } = require('./models/deleteTodo')
 
 connectDb();    //make the connection to the db when app starts
 
 app.get('/', (req, res) => {
 
-    const allTodos = getAllTodos(req, res);
-    res.send("the homepage");
+    const allTodos = getAllTodos(req, res)
+    res.send("the homepage")
 })
+
 
 app.post('/createTodo', (req, res) => {
 
-    createTodo(req);
+    createTodo(req)
     res.send("post request made")
+
+})
+
+
+app.delete('/deleteTodo/:id', (req, res) => {
+
+
+    deleteTodo(req)
+    res.send("delete request made")
 
 })
 
