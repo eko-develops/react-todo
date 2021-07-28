@@ -1,0 +1,69 @@
+$bg-colour: #17181f;    //main background colour
+$surface-bg: #20212c;   //for the cards bg, header bg
+$surface-header-bg: #272833;    //for the header bg of each card
+$highlight: #414052;    //when something is hovered, active, selected
+$text-colour: #FFF;
+$text-family: 'Lato', sans-serif;
+
+//CSS reset, set basic styles
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $text-family;
+    color: $text-colour;
+}
+
+//App styles
+.App{
+    background-color: $bg-colour;
+    height: 100vh;
+}
+
+//Header styles
+header{
+    background-color: $surface-bg;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    //Styling for buttons within header
+    & > button{
+        margin-right: 0.5rem;
+    }
+
+    //The user icon styles
+    .user-icon{
+        background-color: rgb(85, 136, 211);
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+    }
+
+    //https://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties/33856609#33856609
+    .brand{
+        margin-right: auto;
+    }
+   
+}
+
+
+
+//General button styles
+button{
+    background: none;
+    color: white;
+    border: 2px white solid;
+    border-radius: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: all 0.3s ease-out 0s;
+    padding: 0.5rem;
+
+    &:hover{
+        background-color: white;
+        color: $surface-bg;
+    }
+}
