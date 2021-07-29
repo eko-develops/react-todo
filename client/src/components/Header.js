@@ -3,10 +3,13 @@ import React from 'react'
 const header = () => {
     return (
         <header>
-            <span className="brand">React To Do</span>
-            <button type="button">Add Task</button>
-            <button type="button">Search</button>
-            <div className="user-icon"></div>
+            <h1 className="brand">React To Do</h1>
+            <nav>
+                <button type="button">Add Task</button>
+                <button type="button">Search</button>
+                <div className="user-icon"></div>
+            </nav>
+
         </header>
     )
 }
