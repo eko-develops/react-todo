@@ -1,7 +1,7 @@
 import React from 'react'
 import Cards from './Cards'
 
-const Dashboard = ({todos}) => {
+const Dashboard = ({todos, isError, isLoading}) => {
     return (
         <div className="dashboard">
             <div className="dashboard-wrapper">
@@ -18,8 +18,11 @@ const Dashboard = ({todos}) => {
             
                 </div>
                 {/* End sorting buttons */}
-
-                <Cards todos={todos}/>
+                <div className="sub-wrapper">
+                {isLoading && <div className="loading">Loading.....</div>}
+                {isError ? "Could not find any records..." : <Cards todos={todos} />}
+                </div>
+            
                 
 
                 {/* End card container */}
