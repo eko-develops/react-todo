@@ -14,14 +14,27 @@ $text-family: 'Roboto', sans-serif;
     color: $text-colour;
 }
 
+
+
 //App styles
 .App{
     background-color: $bg-colour;
-    min-height: 100vh;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+//General button styles
+button{
+    background: none;
+    color: white;
+    border: 2px white solid;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: all 0.3s ease-out 0s;
+    padding: 0.5rem;
+
+    &:hover{
+        background-color: $highlight;
+    }
 }
 
 //Header styles
@@ -33,7 +46,7 @@ header{
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
-    z-index: 1;
+    
 
     nav{
         display: flex;
@@ -64,20 +77,18 @@ header{
 
 .sidebar{
     background-color: $surface-bg;
-    position: absolute;
-    left: 0;
-    top: 80px;
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     display: none;  //mobile first so we'll have the side bar hiding by default
+    padding: 20px;
 
-    padding: 1rem;
+
     ul{
         margin-top: 1rem;
         li{
             margin: 0.5rem;
-            padding: 1rem;
+            padding: 1rem 2rem;
             list-style-type: none;
             transition: all 0.3s ease-out 0s;
 
@@ -90,27 +101,77 @@ header{
 }
 
 .content{
-    width: 50%;
-    background-color: red;
+    display: flex;
+    height: 100vh;
 }
 
+.dashboard{
+width: 100%;
+display: flex;
+justify-content: center;
 
-//General button styles
-button{
-    background: none;
-    color: white;
-    border: 2px white solid;
-    border-radius: 1rem;
-    font-weight: bold;
-    text-transform: capitalize;
-    transition: all 0.3s ease-out 0s;
-    padding: 0.5rem;
+    .important-sort{
+        button{
+            margin: 0.5rem 0;
+            margin-right: 0.5rem;
+        }
+    }
 
-    &:hover{
-        background-color: white;
-        color: $surface-bg;
+    .dashboard-wrapper{
+        width: 80%;
+    }
+
+    h2{
+        font-size: 2rem;
+        padding: 50px 0;
+    }
+
+    h3{
+        font-size: 1.8rem;
+        padding: 2rem 0;
     }
 }
+
+
+.cards-container{
+    margin-top: 25px;
+
+    .card{
+        background-color: $surface-bg;
+        margin: 0.5rem 0;
+        border-radius: 10px;
+
+        .card-header{
+            background-color: $surface-header-bg;
+            padding: 1rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-details{
+            padding: 1rem;
+
+            input, label{
+                padding: 1rem;
+            }
+        }
+
+        .goto-collection{
+            text-align: center;
+           
+            button{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border: none;
+                width: 100%;
+                &:hover{
+                    background-color: $highlight;
+                }
+            }
+        }
+    }
+}
+
 
 
 // X-Small 	None 	<576px

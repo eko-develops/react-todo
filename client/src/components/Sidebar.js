@@ -6,6 +6,9 @@ const Sidebar = () => {
             <h5>Collections</h5>
             <ul>
                 <li>
+                    All
+                </li>
+                <li>
                     Personal
                 </li>
                 <li>
