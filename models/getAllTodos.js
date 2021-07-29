@@ -5,10 +5,16 @@ const Todo = require('../schemas/todo.js')
 const getAllTodos = (req, res) => {
     Todo.find() //Schema.find() - returns all Todo's in the collection
     .then( (data) => {
-        // res.send("hello")
+        res.json(data)
         console.log('\nHere are all the Todos\n' , data);
     })
     .catch( (err) => {
+        res.status(404)
+        .json({
+            message: "There were no todos found",
+            error: "There were no Todos found."
+        })
+
         console.log('\nThere was an error in retrieving all the Todos\n', err);
     })
 }

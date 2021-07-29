@@ -1,7 +1,7 @@
 import React from 'react'
-import Card from './Card'
+import Cards from './Cards'
 
-const Dashboard = () => {
+const Dashboard = ({todos}) => {
     return (
         <div className="dashboard">
             <div className="dashboard-wrapper">
@@ -18,10 +18,10 @@ const Dashboard = () => {
             
                 </div>
                 {/* End sorting buttons */}
-                <div className="cards-container">
-                    <Card />
-                    <Card />
-                </div>
+
+                <Cards todos={todos}/>
+                
+
                 {/* End card container */}
             </div>
             

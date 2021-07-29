@@ -1,22 +1,31 @@
 import React from 'react'
 
-const Card = () => {
-    return (
-        <div className="card">
+const Cards = ({todos}) => {
+
+    const theTodos = todos.map((todo) => 
+                    <div className="card" key={todo._id}> 
                         <div className="card-header">
                             <h4 className="card-category">
-                                Design
+                                {todo.title}
                             </h4>
                         </div>
                         <div className="card-details">
-                            <input type="checkbox" id="todo" name="todo1" value="todo-value"></input>
-                            <label for="todo">This is a To Do</label>
+                            <input type="checkbox" value="todo-value"></input>
+                            <label>{todo.description}</label>
                         </div>
                         <div className="goto-collection">
                             <button type="button">Go to Collection</button>
                         </div>
+                     </div>
+    );
+
+    return (
+        
+        <div className="cards-container">
+            {theTodos}
         </div>
+       
     )
 }
 
-export default Card
+export default Cards

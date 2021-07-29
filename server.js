@@ -22,14 +22,14 @@ const { deleteTodo } = require('./models/deleteTodo')
 
 connectDb();    //make the connection to the db when app starts
 
-app.get('/', (req, res) => {
+app.get('/api/all', (req, res) => {
 
     const allTodos = getAllTodos(req, res)
-    res.send("the homepage")
+
 })
 
 
-app.post('/createTodo', (req, res) => {
+app.post('/api/create', (req, res) => {
 
     createTodo(req)
     res.send("post request made")
