@@ -30,6 +30,9 @@ const Header = () => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
+    //we'll need a state to handle the success and error messages for submitting a new todo
+    const [isSubmitted, setIsSubmitted] = useState(false)
+
     //handles opening the modal
     const openModal = () => {
         setIsModalOpen(true);
@@ -61,6 +64,10 @@ const Header = () => {
         })
         .then( (res) => res.text())
         .then( (data) => {
+            setIsSubmitted(true);
+            setTimeout( () => {
+                setIsSubmitted(false)
+            }, 5000)
             console.log('Todo added successfully')
         })
         .catch( (err) => {
@@ -117,6 +124,7 @@ const Header = () => {
                         <input onChange={handleTitleChange} value={title} type="text" />
                         <label>Notes</label>
                         <textarea onChange={handleDescriptionChange} value={description} col="25" row="6" />
+                        {isSubmitted && <span>Successfully Submitted!</span>}
                         <div className="sort-buttons">
                             <button onClick={handleAddTask}>Add Task</button>
                             <button onClick={closeModal}>Cancel</button>
