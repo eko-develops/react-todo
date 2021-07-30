@@ -57,7 +57,7 @@ header{
     //Styling for buttons within header nav
     & > button{
         margin-right: 0.5rem;
-    }
+     }
     }
 
 
@@ -74,7 +74,29 @@ header{
         text-transform: capitalize;
         font-size: 1.5rem;
     }
+
+    
    
+
+}
+
+form.add-task-form {
+
+    .sort-buttons{
+        button{
+            margin-right: 5px;
+        }   
+    }
+
+    label {
+        display: block;
+    }
+
+    input, textarea{
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 5px;
+    }
 }
 
 .sidebar{
@@ -171,8 +193,6 @@ justify-content: center;
         }
     }
 }
-
-
 
 // X-Small 	None 	<576px
 // Small 	sm 	≥576px
