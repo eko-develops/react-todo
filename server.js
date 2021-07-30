@@ -25,6 +25,8 @@ connectDb();    //make the connection to the db when app starts
 app.get('/api/all', (req, res) => {
 
     const allTodos = getAllTodos(req, res)
+    //try finding a way to send back that server has received get request
+    // res.send("SERVER - GET request made")
 
 })
 
@@ -32,7 +34,7 @@ app.get('/api/all', (req, res) => {
 app.post('/api/create', (req, res) => {
 
     createTodo(req)
-    res.send("post request made")
+    res.send("SERVER - POST request made")
 
 })
 

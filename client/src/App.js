@@ -30,7 +30,7 @@ function App() {
             setIsError(true); //set error to true if there is one
             console.log('error retrieving data', err);
           })
-        }, 2000)  //imitate some lag when retrieving data
+        }, 800)  //imitate some lag when retrieving data
       }, []); //add empty array so this fires only on first render
 
     
