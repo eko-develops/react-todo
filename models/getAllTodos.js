@@ -6,8 +6,7 @@ const getAllTodos = (req, res) => {
     Todo.find() //Schema.find() - returns all Todo's in the collection
     .then( (data) => {
         res.json(data)
-        // console.log('\nHere are all the Todos\n' , data);
-        console.log('successful request made to get all todos');
+        console.log('Successful Request Made to Get All Todos');
     })
     .catch( (err) => {
         res.status(404)
