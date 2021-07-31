@@ -45,7 +45,16 @@ function App() {
         const filteredTodos = todos.filter( (todo) => {
           return todo._id !== data.id
         })
-        setTodos(filteredTodos) //this will cause the todos to re-render
+
+        
+          // setTodos(filteredTodos) //this will cause the todos to re-render
+        if(!filteredTodos.length){  //if the todo is empty after last deleting last todo, display error message
+          setIsError(true)
+             setTodos([])
+        } else {
+          setTodos(filteredTodos) //this will cause the todos to re-render
+          setIsError(false)
+        }
       }
 
 
