@@ -43,7 +43,10 @@ app.delete('/api/delete/:id', (req, res) => {
 
 
     deleteTodo(req)
-    res.send({message: "SERVER - DELETE request made"})
+    res.send({
+        message: "SERVER - DELETE request made",
+        id: req.params.id
+})
 
 })
 

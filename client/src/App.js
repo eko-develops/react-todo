@@ -34,6 +34,16 @@ function App() {
       }, []); //add empty array so this fires only on first render
 
 
+      const newTodos = (data, todos) => {
+        //if the ids do not match, add them to array. this will sort out the deleted todos without mutating state
+        const filteredTodos = todos.filter( (todo) => {
+          return todo._id !== data.id
+        })
+        setTodos(filteredTodos) //this will cause the todos to re-render
+      }
+
+
+
       const deleteTodo = (id) => {
         console.log('deleting todo...', id)
 
@@ -45,7 +55,11 @@ function App() {
         })
         .then( (res) => res.json())
         .then( (data) => {
-          console.log('Todo deletion success\n', data)
+
+          newTodos(data, todos)
+          
+          
+          // console.log('Todo deletion success\n', data)
         })
         .catch( (err) => {
           console.log('Error deleting todo..\n', err)
