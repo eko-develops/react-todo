@@ -33,6 +33,26 @@ function App() {
         }, 800)  //imitate some lag when retrieving data
       }, []); //add empty array so this fires only on first render
 
+
+      const deleteTodo = (id) => {
+        console.log('deleting todo...', id)
+
+        fetch(`http://localhost:8000/api/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+              'Content-type': 'application/json'
+          }
+        })
+        .then( (res) => res.json())
+        .then( (data) => {
+          console.log('Todo deletion success\n', data)
+        })
+        .catch( (err) => {
+          console.log('Error deleting todo..\n', err)
+        })
+
+      }
+
     
  
 
@@ -43,7 +63,7 @@ function App() {
       
       <div className="content">
         <Sidebar />
-        <Dashboard todos={todos} isError={isError} isLoading={isLoading}/>
+        <Dashboard todos={todos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
       </div>
     
 

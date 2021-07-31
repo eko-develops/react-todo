@@ -39,11 +39,11 @@ app.post('/api/create', (req, res) => {
 })
 
 
-app.delete('/deleteTodo/:id', (req, res) => {
+app.delete('/api/delete/:id', (req, res) => {
 
 
     deleteTodo(req)
-    res.send("delete request made")
+    res.send({message: "SERVER - DELETE request made"})
 
 })
 
