@@ -21,9 +21,15 @@ function App() {
             return res.json();
           })
           .then( (data) => {  //we got the data
-            setIsError(false); //set this to false just in case
-            setIsLoading(false);
-            setTodos(data);
+            if(!data.length){ //find will return an empty array if there are no records
+              setIsError(true)  //if there are no records show error
+              setIsLoading(false)
+            } else {
+              setIsError(false); //set this to false just in case
+              setIsLoading(false);
+              setTodos(data);
+            }
+           
           })
           .catch( (err) => {  //we did not get the data
             setIsLoading(false);
