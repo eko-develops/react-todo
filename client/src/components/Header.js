@@ -1,6 +1,7 @@
 import {React, useState } from 'react'
 import Modal from 'react-modal'
 
+//custom styles for the modal
 const customStyles = {
     content: {
       top: '50%',
@@ -22,16 +23,14 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
-const Header = () => {
-
+const Header = ({todos, setTodos}) => {
+    
     const [isModalOpen, setIsModalOpen] = useState(false) //by default the modal will be closed
 
     //is there a way we condense these states into one? maybe in an object?
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
-    //we'll need a state to handle the success and error messages for submitting a new todo
-    const [isSubmitted, setIsSubmitted] = useState(false)
 
     //handles opening the modal
     const openModal = () => {
@@ -62,13 +61,13 @@ const Header = () => {
             },
             body: JSON.stringify(data)
         })
-        .then( (res) => res.text())
+        .then( (res) => res.json()) //the response from the endpoint is sent back as json so we need to parse it
         .then( (data) => {
-            setIsSubmitted(true);
-            setTimeout( () => {
-                setIsSubmitted(false)
-            }, 5000)
-            console.log('Todo added successfully')
+            console.log('Todo added successfully\n', data)  //#TEST
+
+            const concatNewTodo = todos.concat(data)    //we'll use concat to add the new todo to the list without mutating the state
+            setTodos(concatNewTodo) //causes the todos to re-render with new todo added
+            setIsModalOpen(false);
         })
         .catch( (err) => {
             console.log('Error adding todo\n', err);
@@ -79,7 +78,7 @@ const Header = () => {
     const handleAddTask = (e) => {
         e.preventDefault();
 
-        console.log(`Attempting to add new task\nTitle: ${title}\nDescription: ${description}`)
+        console.log(`Attempting to add new task\nTitle: ${title}\nDescription: ${description}`) //#TEST
 
         //We'll create an object with the data given and call the postNewtodo function with the newTask object
         const newTask = {
@@ -90,8 +89,8 @@ const Header = () => {
         postNewTodo(newTask);
 
         //reset the states after clicking add
-        setTitle(" ")
-        setDescription(" ")
+        setTitle("")
+        setDescription("")
 
     }
 
@@ -111,20 +110,18 @@ const Header = () => {
             https://reactcommunity.org/react-modal/
             */}
             <Modal
-                    isOpen={isModalOpen}
-                    // onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
+                    isOpen={isModalOpen}   //is the modal open
+                    // onAfterOpen={afterOpenModal} //if we need to fire anything after the modal opens
+                    onRequestClose={closeModal} //closing the modal
+                    style={customStyles}    //add styles
+                    contentLabel="New Task Modal"
                 >
-                    {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
                     <h2>Add a New Task</h2>
                     <form className="add-task-form">
                         <label>Title</label>
                         <input onChange={handleTitleChange} value={title} type="text" />
                         <label>Notes</label>
                         <textarea onChange={handleDescriptionChange} value={description} col="25" row="6" />
-                        {isSubmitted && <span>Successfully Submitted!</span>}
                         <div className="sort-buttons">
                             <button onClick={handleAddTask}>Add Task</button>
                             <button onClick={closeModal}>Cancel</button>

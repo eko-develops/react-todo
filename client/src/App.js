@@ -45,7 +45,7 @@ function App() {
 
 
       const deleteTodo = (id) => {
-        console.log('deleting todo...', id)
+        console.log('Preparing to Delete:', id)
 
         fetch(`http://localhost:8000/api/delete/${id}`, {
           method: 'DELETE',
@@ -58,8 +58,7 @@ function App() {
 
           newTodos(data, todos)
           
-          
-          // console.log('Todo deletion success\n', data)
+          console.log('Todo Deletion Success\n', data) //#TEST
         })
         .catch( (err) => {
           console.log('Error deleting todo..\n', err)
@@ -68,12 +67,9 @@ function App() {
       }
 
     
- 
-
-
   return (
     <div className="App">
-      <Header />
+      <Header todos={todos} setTodos={setTodos} />
       
       <div className="content">
         <Sidebar />

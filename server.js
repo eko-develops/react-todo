@@ -31,11 +31,10 @@ app.get('/api/all', (req, res) => {
 })
 
 
-app.post('/api/create', (req, res) => {
-
-    createTodo(req)
-    res.send("SERVER - POST request made")
-
+app.post('/api/create', async (req, res) => {
+    const response = await createTodo(req)
+    res.send(response)  //in order to get the response, had to change the post endpoint to async
+    
 })
 
 
