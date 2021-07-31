@@ -75,7 +75,7 @@ function App() {
     
   return (
     <div className="App">
-      <Header todos={todos} setTodos={setTodos} />
+      <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
       
       <div className="content">
         <Sidebar />

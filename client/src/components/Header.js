@@ -23,7 +23,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
-const Header = ({todos, setTodos}) => {
+const Header = ({todos, setTodos, setIsError}) => {
     
     const [isModalOpen, setIsModalOpen] = useState(false) //by default the modal will be closed
 
@@ -68,6 +68,11 @@ const Header = ({todos, setTodos}) => {
             const concatNewTodo = todos.concat(data)    //we'll use concat to add the new todo to the list without mutating the state
             setTodos(concatNewTodo) //causes the todos to re-render with new todo added
             setIsModalOpen(false);
+            
+            // if the app starts wtih no records isError is true
+            // so when a new todo is added, set error to false
+            // so the no records found message does not appear
+            setIsError(false);  
         })
         .catch( (err) => {
             console.log('Error adding todo\n', err);
