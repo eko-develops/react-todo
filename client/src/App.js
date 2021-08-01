@@ -18,7 +18,7 @@ function App() {
         fetch(`http://localhost:8000/api/all`)
           .then( (res) => res.json())
           .then( (data) => {  //we got the data
-            if(!data.length){ //find will return an empty array if there are no records so we need to handle that
+            if(!data.length){ //Mongoose.model.find will return an empty array if there are no records so we need to handle that
               setIsError(true)  //if there are no records found, show error
               setIsLoading(false) 
             } else {
@@ -36,20 +36,8 @@ function App() {
       }, []); //add empty array so this fires only on first render
 
 
-      const newTodos = (data, todos) => {
-        //if the ids do not match, add them to array. this will sort out the deleted todos
-        const filteredTodos = todos.filter( (todo) => todo._id !== data.id )
 
-        if(!filteredTodos.length){  //if the todo is empty after last deleting last todo, display error message
-          setIsError(true)
-             setTodos([])
-        } else {
-          setTodos(filteredTodos) //this will cause the todos to re-render
-          setIsError(false)
-        }
-      }
-
-
+      //this function will be passed down from App>Dashboard>Card for each card
       const deleteTodo = (id) => {
         console.log('Preparing to Delete:', id) //#TEST
         fetch(`http://localhost:8000/api/delete/${id}`, {
@@ -66,8 +54,20 @@ function App() {
         .catch( (err) => console.log('Error deleting todo..\n', err))
       }
 
+      //this function will filter the deleted todo from todos and set the state of todos to the filtered todos
+      const newTodos = (data, todos) => {
+        //if the ids do not match, add them to array. this will sort out the deleted todos
+        const filteredTodos = todos.filter( (todo) => todo._id !== data.id )
 
-    
+        if(!filteredTodos.length){  //if the todo is empty after last deleting last todo, display error message
+            setIsError(true)
+            setTodos([])
+        } else {
+            setTodos(filteredTodos) //this will cause the todos to re-render
+            setIsError(false)
+        }
+      }
+
   return (
       <div className="App">
         <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
