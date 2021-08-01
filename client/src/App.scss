@@ -81,6 +81,13 @@ header{
 }
 
 form.add-task-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .add-task-form-wrapper{
+        width: 100%;
+    }
 
     .sort-buttons{
         button{
@@ -92,7 +99,11 @@ form.add-task-form {
         display: block;
     }
 
-    input, textarea{
+    select{
+        text-align: center;
+    }
+
+    input, textarea, select{
         margin-bottom: 10px;
         width: 100%;
         padding: 5px;

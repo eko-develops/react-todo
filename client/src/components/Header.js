@@ -14,6 +14,7 @@ const customStyles = {
       borderRadius: '10px',
       boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
       border: 'none',
+      padding: '2rem'
     },
     overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -130,20 +131,23 @@ const Header = ({todos, setTodos, setIsError}) => {
                 >
                     <h2>Add a New Task</h2>
                     <form className="add-task-form">
-                        <label>Title</label>
-                        <input onChange={handleTitleChange} value={title} type="text" />
-                        <label>Notes</label>
-                        <textarea onChange={handleDescriptionChange} value={description} col="25" row="6" />
-                        <label htmlFor="category">Category</label>
-                        <select onChange={handleCategorySelect} name="category" id="category">
-                            <option value="personal">Personal</option>
-                            <option value="work">Work</option>
-                            <option value="important">Important</option>
-                        </select>
-                        <div className="sort-buttons">
-                            <button onClick={handleAddTask}>Add Task</button>
-                            <button onClick={closeModal}>Cancel</button>
+                        <div className="add-task-form-wrapper">
+                            <label>Title</label>
+                            <input onChange={handleTitleChange} value={title} type="text" />
+                            <label>Notes</label>
+                            <textarea onChange={handleDescriptionChange} value={description} col="25" row="6" />
+                            <label htmlFor="category">Category</label>
+                            <select onChange={handleCategorySelect} name="category" id="category">
+                                <option value="personal">Personal</option>
+                                <option value="work">Work</option>
+                                <option value="important">Important</option>
+                            </select>
+                            <div className="sort-buttons">
+                                <button onClick={handleAddTask}>Add Task</button>
+                                <button onClick={closeModal}>Cancel</button>
+                            </div>
                         </div>
+                        
                         
                     </form>
                 </Modal>
