@@ -1,27 +1,27 @@
 import React from 'react'
 import Cards from './Cards'
 import Sidebar from './Sidebar'
+// import { useState } from 'react'
 
 
-const Dashboard = ({todos, isError, isLoading, deleteTodo, setTodos}) => {
+const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
+
+
 
     //sorting todo functions
-    const handleAllTodoFilter = () => {
+    const handleAllTodoFilter = (currentTodos) => {
         console.log('all todos')
     }
-    const handlePersonalTodoFilter = (todos) => {
+    const handlePersonalTodoFilter = (currentTodos) => {
         // console.log('personal todos', todos)
-        const personalTodos = todos.filter( (todo) => todo.category === 'personal')
-        setTodos(personalTodos) //trigger a re-render after filtering
+        const personalTodos = currentTodos.filter( (todo) => todo.category === 'personal')
     }
     const handleWorkTodoFilter = () => {
         const workTodos = todos.filter( (todo) => todo.category === 'work')
-        setTodos(workTodos) //trigger a re-render after filtering
         // console.log('work todos')
     }
     const handleImportantTodoFilter = () => {
         const importantTodos = todos.filter( (todo) => todo.category === 'important')
-        setTodos(importantTodos) //trigger a re-render after filtering
         // console.log('important todos')
     }
 
@@ -38,8 +38,8 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo, setTodos}) => {
                     <div className="sort-buttons">
                         <button onClick={handleAllTodoFilter} type="button">All</button>
                         <button onClick={() => handlePersonalTodoFilter(todos)} type="button">Personal</button>
-                        <button onClick={handleWorkTodoFilter} type="button">Work</button>
-                        <button onClick={handleImportantTodoFilter} type="button">Important</button>
+                        <button onClick={() => handleWorkTodoFilter(todos)} type="button">Work</button>
+                        <button onClick={() => handleImportantTodoFilter(todos)} type="button">Important</button>
                     </div>
                 </div>
                 {/* End sorting buttons */}

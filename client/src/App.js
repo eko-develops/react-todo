@@ -16,23 +16,20 @@ function App() {
   useEffect( () => {
     setTimeout(() => {
         fetch(`http://localhost:8000/api/all`)
-          .then( (res) => {
-            return res.json();
-          })
+          .then( (res) => res.json())
           .then( (data) => {  //we got the data
-            if(!data.length){ //find will return an empty array if there are no records
-              setIsError(true)  //if there are no records show error
-              setIsLoading(false)
+            if(!data.length){ //find will return an empty array if there are no records so we need to handle that
+              setIsError(true)  //if there are no records found, show error
+              setIsLoading(false) 
             } else {
-              setIsError(false); //set this to false just in case
-              setIsLoading(false);
+              setIsError(false); //set this to false just to make sure there is no error showing when todos are present
+              setIsLoading(false);    //set this to false to make sure there is no loading showing when todos are present
               setTodos(data);
             }
-           
           })
           .catch( (err) => {  //we did not get the data
             setIsLoading(false);
-            setIsError(true); //set error to true if there is one
+            setIsError(true); //show the error if we cant retrieve data
             console.log('error retrieving data', err);
           })
         }, 800)  //imitate some lag when retrieving data
@@ -40,13 +37,9 @@ function App() {
 
 
       const newTodos = (data, todos) => {
-        //if the ids do not match, add them to array. this will sort out the deleted todos without mutating state
-        const filteredTodos = todos.filter( (todo) => {
-          return todo._id !== data.id
-        })
+        //if the ids do not match, add them to array. this will sort out the deleted todos
+        const filteredTodos = todos.filter( (todo) => todo._id !== data.id )
 
-        
-          // setTodos(filteredTodos) //this will cause the todos to re-render
         if(!filteredTodos.length){  //if the todo is empty after last deleting last todo, display error message
           setIsError(true)
              setTodos([])
@@ -57,10 +50,8 @@ function App() {
       }
 
 
-
       const deleteTodo = (id) => {
-        console.log('Preparing to Delete:', id)
-
+        console.log('Preparing to Delete:', id) //#TEST
         fetch(`http://localhost:8000/api/delete/${id}`, {
           method: 'DELETE',
           headers: {
@@ -69,14 +60,10 @@ function App() {
         })
         .then( (res) => res.json())
         .then( (data) => {
-
-          newTodos(data, todos)
-          
+          newTodos(data, todos) //function to filter todos
           console.log('Todo Deletion Success\n', data) //#TEST
         })
-        .catch( (err) => {
-          console.log('Error deleting todo..\n', err)
-        })
+        .catch( (err) => console.log('Error deleting todo..\n', err))
       }
 
 
@@ -85,7 +72,7 @@ function App() {
       <div className="App">
         <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
         <div className="content">
-          <Dashboard todos={todos} setTodos={setTodos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
+          <Dashboard todos={todos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
         </div>
       </div>
   );
