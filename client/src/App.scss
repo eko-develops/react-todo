@@ -168,11 +168,15 @@ display: flex;
 
 .cards-container{
     margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
 
     .card{
         background-color: $surface-bg;
-        margin: 0.5rem 0;
+        margin-right: 10px; //space out cards
+        margin-bottom: 10px; //space out cards
         border-radius: 10px;
+        width: 285px;   //width of card
 
         .card-header{
             background-color: $surface-header-bg;
