@@ -2,12 +2,7 @@ import React from 'react'
 
 const Cards = ({todos, deleteTodo}) => {
 
-    const handleCardDelete = (e) => {
-        const buttonId = e.target.id
-
-        deleteTodo(buttonId)
-        
-    }
+    const handleCardDelete = (e) => deleteTodo(e.target.id)
 
     //create the structure of the todo using map
     const theTodos = todos.map((todo) => 
