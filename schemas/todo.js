@@ -10,6 +10,10 @@ const TodoSchema = new mongoose.Schema(
         description: {
             type: String,
         },
+        category: {
+            type: String,
+            required: true,
+        }
     }, 
     {
         timestamps: true,   //displays timestamps on each record

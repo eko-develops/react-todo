@@ -30,6 +30,7 @@ const Header = ({todos, setTodos, setIsError}) => {
     //is there a way we condense these states into one? maybe in an object?
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [category, setCategory] = useState("personal")
 
 
     //handles opening the modal
@@ -54,6 +55,7 @@ const Header = ({todos, setTodos, setIsError}) => {
     //handles the state for the select field
     const handleCategorySelect = (e) => {
         console.log(e.target.value)
+        setCategory(e.target.value)
     }
 
     //post data to endpoint /api/create
@@ -88,12 +90,13 @@ const Header = ({todos, setTodos, setIsError}) => {
     const handleAddTask = (e) => {
         e.preventDefault();
 
-        console.log(`Attempting to add new task\nTitle: ${title}\nDescription: ${description}`) //#TEST
+        console.log(`Attempting to add new task\nTitle: ${title}\nDescription: ${description}\nCategory: ${category}`) //#TEST
 
         //We'll create an object with the data given and call the postNewtodo function with the newTask object
         const newTask = {
             title: title,
             description: description,
+            category: category,
         }
       
         postNewTodo(newTask);
@@ -136,7 +139,7 @@ const Header = ({todos, setTodos, setIsError}) => {
                         <select onChange={handleCategorySelect} name="category" id="category">
                             <option value="personal">Personal</option>
                             <option value="work">Work</option>
-                            <option value="Important">Important</option>
+                            <option value="important">Important</option>
                         </select>
                         <div className="sort-buttons">
                             <button onClick={handleAddTask}>Add Task</button>
