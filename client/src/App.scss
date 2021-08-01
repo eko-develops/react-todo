@@ -131,7 +131,7 @@ form.add-task-form {
 .dashboard{
 width: 100%;
 display: flex;
-justify-content: center;
+
 
     .important-sort{
         button{
@@ -140,9 +140,19 @@ justify-content: center;
         }
     }
 
-    .dashboard-wrapper{
+    .center-dashboard{
         width: 70%;
     }
+
+    .sub-wrapper{
+        width: 100%;    
+    }
+
+    .dashboard-wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        }
 
     h2{
         font-size: 2rem;
@@ -208,6 +218,10 @@ justify-content: center;
 
 @media all and (min-width: 576px){
     .sidebar{
-        display: block;
+        display: inline-block;
+    }
+
+    .sub-wrapper{
+        width: 80%;    
     }
 }

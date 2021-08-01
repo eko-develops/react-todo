@@ -1,7 +1,6 @@
 import './App.scss';
 import Header from './components/Header'
 import Dashboard from './components/Dashboard'
-import Sidebar from './components/Sidebar'
 import { useState, useEffect } from 'react'
 
 
@@ -87,7 +86,6 @@ function App() {
       <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
       
       <div className="content">
-        <Sidebar />
         <Dashboard todos={todos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
       </div>
     
