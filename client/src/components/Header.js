@@ -51,6 +51,11 @@ const Header = ({todos, setTodos, setIsError}) => {
         setDescription(e.target.value)
     }
 
+    //handles the state for the select field
+    const handleCategorySelect = (e) => {
+        console.log(e.target.value)
+    }
+
     //post data to endpoint /api/create
     //when creating a todo, we'll put all the values in an object then pass the object into this function
     const postNewTodo = (data) => {
@@ -127,6 +132,12 @@ const Header = ({todos, setTodos, setIsError}) => {
                         <input onChange={handleTitleChange} value={title} type="text" />
                         <label>Notes</label>
                         <textarea onChange={handleDescriptionChange} value={description} col="25" row="6" />
+                        <label htmlFor="category">Category</label>
+                        <select onChange={handleCategorySelect} name="category" id="category">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="Important">Important</option>
+                        </select>
                         <div className="sort-buttons">
                             <button onClick={handleAddTask}>Add Task</button>
                             <button onClick={closeModal}>Cancel</button>
