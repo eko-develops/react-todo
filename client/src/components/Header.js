@@ -54,7 +54,6 @@ const Header = ({todos, setTodos, setIsError}) => {
 
     //handles the state for the select field
     const handleCategorySelect = (e) => {
-        console.log(e.target.value)
         setCategory(e.target.value)
     }
 

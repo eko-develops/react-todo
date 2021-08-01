@@ -183,7 +183,7 @@ display: flex;
             padding: 1rem;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-
+            text-transform: capitalize;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -191,6 +191,16 @@ display: flex;
 
         .card-details{
             padding: 1rem;
+
+            p{
+                margin-top: 10px;
+            }
+
+            h3{
+                display: inline;
+                margin: 10px;
+                font-size: 1.5rem;
+            }
 
             input, label{
                 padding: 1rem;
