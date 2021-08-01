@@ -77,20 +77,17 @@ function App() {
         .catch( (err) => {
           console.log('Error deleting todo..\n', err)
         })
-
       }
+
 
     
   return (
-    <div className="App">
-      <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
-      
-      <div className="content">
-        <Dashboard todos={todos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
+      <div className="App">
+        <Header setIsError={setIsError} todos={todos} setTodos={setTodos} />
+        <div className="content">
+          <Dashboard todos={todos} setTodos={setTodos} deleteTodo={deleteTodo} isError={isError} isLoading={isLoading}/>
+        </div>
       </div>
-    
-
-    </div>
   );
 }
 
