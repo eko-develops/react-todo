@@ -1,20 +1,20 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({handleAllTodoFilter, handleWorkTodoFilter, handlePersonalTodoFilter, handleImportantTodoFilter}) => {
     return (
         <div className="sidebar">
             <h5>Collections</h5>
             <ul>
-                <li>
+                <li onClick={handleAllTodoFilter}>
                     All
                 </li>
-                <li>
+                <li onClick={handlePersonalTodoFilter}>
                     Personal
                 </li>
-                <li>
+                <li onClick={handleWorkTodoFilter}>
                     Work
                 </li>
-                <li>
+                <li onClick={handleImportantTodoFilter}>
                     Important
                 </li>
             </ul>

@@ -126,7 +126,7 @@ form.add-task-form {
             padding: 1rem 2rem;
             list-style-type: none;
             transition: all 0.3s ease-out 0s;
-
+            cursor: pointer;
             &:hover{
                 background-color: $highlight;
                 border-radius: 5%;

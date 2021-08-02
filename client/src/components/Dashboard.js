@@ -8,21 +8,21 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
     const [sortBy, setSortBy] = useState('')
 
     //sorting todo functions
-    const handleAllTodoFilter = (allTodos) => {
+    const handleAllTodoFilter = () => {
         // console.log('\nAll Todos', allTodos)
         setSortBy('')   //set to empty so we can display all todos
     }
-    const handlePersonalTodoFilter = (allTodos) => {
+    const handlePersonalTodoFilter = () => {
         // const personalTodos = allTodos.filter( (todo) => todo.category === 'personal')
         // console.log('\nPersonal Todos', personalTodos)
         setSortBy('personal')
     }
-    const handleWorkTodoFilter = (allTodos) => {
+    const handleWorkTodoFilter = () => {
         // const workTodos = allTodos.filter( (todo) => todo.category === 'work')
         // console.log('\nWork Todos', workTodos)
         setSortBy('work')
     }
-    const handleImportantTodoFilter = (allTodos) => {
+    const handleImportantTodoFilter = () => {
         // const importantTodos = allTodos.filter( (todo) => todo.category === 'important')
         // console.log('\nImportant Todos', importantTodos)
         setSortBy('important')
@@ -30,7 +30,12 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
 
     return (
         <div className="dashboard">
-            <Sidebar />
+            <Sidebar
+            handleImportantTodoFilter={handleImportantTodoFilter}
+            handleWorkTodoFilter={handleWorkTodoFilter}
+            handlePersonalTodoFilter={handlePersonalTodoFilter}
+            handleAllTodoFilter={handleAllTodoFilter}
+            />
             <div className="dashboard-wrapper">
                 <div className="center-dashboard">
 
