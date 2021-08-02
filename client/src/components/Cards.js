@@ -2,9 +2,6 @@ import React from 'react'
 
 const Cards = ({todos, deleteTodo, sortBy}) => {
 
-    //handles the delete button for each todo
-    const handleCardDelete = (e) => deleteTodo(e.target.id)
-
     const todoList = todos.filter((todo) => {
         if(sortBy){ //if sortBy is set we'll use the "key" for the sort
             return todo.category === sortBy
@@ -15,7 +12,7 @@ const Cards = ({todos, deleteTodo, sortBy}) => {
     <div className="card" key={todo._id}> 
         <div className="card-header">
             <h4 className="card-category"> {todo.category} </h4>
-            <button type="button" id={todo._id} onClick={handleCardDelete}>Delete</button>
+            <button type="button" id={todo._id} onClick={(e) => deleteTodo(e.target.id) }>Delete</button>
         </div>
         <div className="card-details">
             <input type="checkbox" value="todo-value"></input>

@@ -11,7 +11,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true); //true because when app first starts there will be a delay to get data from database
 
 
-
   //this is for fetching the data from api (the todos from database)
   useEffect( () => {
     setTimeout(() => {
@@ -34,7 +33,6 @@ function App() {
           })
         }, 800)  //imitate some lag when retrieving data
       }, []); //add empty array so this fires only on first render
-
 
 
       //this function will be passed down from App>Dashboard>Card for each card
