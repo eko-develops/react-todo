@@ -1,25 +1,31 @@
 import React from 'react'
 import Cards from './Cards'
 import Sidebar from './Sidebar'
-
+import { useState } from 'react'
 
 const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
+
+    const [sortBy, setSortBy] = useState('')
 
     //sorting todo functions
     const handleAllTodoFilter = (allTodos) => {
         console.log('\nAll Todos', allTodos)
+        setSortBy('')
     }
     const handlePersonalTodoFilter = (allTodos) => {
         const personalTodos = allTodos.filter( (todo) => todo.category === 'personal')
         console.log('\nPersonal Todos', personalTodos)
+        setSortBy('personal')
     }
     const handleWorkTodoFilter = (allTodos) => {
         const workTodos = allTodos.filter( (todo) => todo.category === 'work')
         console.log('\nWork Todos', workTodos)
+        setSortBy('work')
     }
     const handleImportantTodoFilter = (allTodos) => {
         const importantTodos = allTodos.filter( (todo) => todo.category === 'important')
         console.log('\nImportant Todos', importantTodos)
+        setSortBy('important')
     }
 
     return (
@@ -42,7 +48,7 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
                 {/* End sorting buttons */}
                 <div className="sub-wrapper">
                     {isLoading && <div className="loading">Loading.....</div>}
-                    {isError ? "Could not find any records..." : <Cards deleteTodo={deleteTodo} todos={todos} />}
+                    {isError ? "Could not find any records..." : <Cards deleteTodo={deleteTodo} sortBy={sortBy} todos={todos} />}
                 </div>
             
                 
