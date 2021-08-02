@@ -9,22 +9,22 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
 
     //sorting todo functions
     const handleAllTodoFilter = (allTodos) => {
-        console.log('\nAll Todos', allTodos)
-        setSortBy('')
+        // console.log('\nAll Todos', allTodos)
+        setSortBy('')   //set to empty so we can display all todos
     }
     const handlePersonalTodoFilter = (allTodos) => {
-        const personalTodos = allTodos.filter( (todo) => todo.category === 'personal')
-        console.log('\nPersonal Todos', personalTodos)
+        // const personalTodos = allTodos.filter( (todo) => todo.category === 'personal')
+        // console.log('\nPersonal Todos', personalTodos)
         setSortBy('personal')
     }
     const handleWorkTodoFilter = (allTodos) => {
-        const workTodos = allTodos.filter( (todo) => todo.category === 'work')
-        console.log('\nWork Todos', workTodos)
+        // const workTodos = allTodos.filter( (todo) => todo.category === 'work')
+        // console.log('\nWork Todos', workTodos)
         setSortBy('work')
     }
     const handleImportantTodoFilter = (allTodos) => {
-        const importantTodos = allTodos.filter( (todo) => todo.category === 'important')
-        console.log('\nImportant Todos', importantTodos)
+        // const importantTodos = allTodos.filter( (todo) => todo.category === 'important')
+        // console.log('\nImportant Todos', importantTodos)
         setSortBy('important')
     }
 

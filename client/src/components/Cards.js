@@ -5,19 +5,16 @@ const Cards = ({todos, deleteTodo, sortBy}) => {
     //handles the delete button for each todo
     const handleCardDelete = (e) => deleteTodo(e.target.id)
 
-
     const todoList = todos.filter((todo) => {
-        if(sortBy){
+        if(sortBy){ //if sortBy is set we'll use the "key" for the sort
             return todo.category === sortBy
-        } else {
+        } else {//if sort not set just display all
             return todo
         }
-    }).map((todo) => 
+    }).map((todo) => //create the structure of each todo after filtering
     <div className="card" key={todo._id}> 
         <div className="card-header">
-            <h4 className="card-category">
-                {todo.category}
-            </h4>
+            <h4 className="card-category"> {todo.category} </h4>
             <button type="button" id={todo._id} onClick={handleCardDelete}>Delete</button>
         </div>
         <div className="card-details">
