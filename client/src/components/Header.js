@@ -31,7 +31,7 @@ const Header = ({todos, setTodos, setIsError}) => {
     //is there a way we condense these states into one? maybe in an object?
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [category, setCategory] = useState("personal")
+    const [category, setCategory] = useState("personal")    //by default category is set to personal
 
 
     //handles opening the modal

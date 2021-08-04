@@ -15,8 +15,6 @@ $text-family: 'Roboto', sans-serif;
 
 }
 
-
-
 //App styles
 .App{
     background-color: $bg-colour;
@@ -49,17 +47,14 @@ header{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
     
-
     nav{
         display: flex;
 
-        
     //Styling for buttons within header nav
     & > button{
         margin-right: 0.5rem;
      }
     }
-
 
     //The user icon styles
     .user-icon{
@@ -74,10 +69,6 @@ header{
         text-transform: capitalize;
         font-size: 1.5rem;
     }
-
-    
-   
-
 }
 
 form.add-task-form {
@@ -118,15 +109,16 @@ form.add-task-form {
     display: none;  //mobile first so we'll have the side bar hiding by default
     padding: 20px;
 
-
     ul{
         margin-top: 1rem;
+
         li{
             margin: 0.5rem;
             padding: 1rem 2rem;
             list-style-type: none;
             transition: all 0.3s ease-out 0s;
             cursor: pointer;
+
             &:hover{
                 background-color: $highlight;
                 border-radius: 5%;
@@ -142,7 +134,6 @@ form.add-task-form {
 .dashboard{
 width: 100%;
 display: flex;
-
 
     .important-sort{
         button{
@@ -222,20 +213,6 @@ display: flex;
 
             input, label{
                 padding: 1rem;
-            }
-        }
-
-        .goto-collection{
-            text-align: center;
-           
-            button{
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                border: none;
-                width: 100%;
-                &:hover{
-                    background-color: $highlight;
-                }
             }
         }
     }

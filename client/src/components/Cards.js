@@ -20,9 +20,6 @@ const Cards = ({todos, deleteTodo, sortBy, query}) => {
             <h3>{todo.title}</h3>
             <p>{todo.description}</p>
         </div>
-        <div className="goto-collection">
-            <button type="button">Go to Collection</button>
-        </div>
      </div>
 );
 
