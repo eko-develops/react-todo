@@ -27,8 +27,6 @@ Modal.setAppElement('#root');
 const Header = ({todos, setTodos, setIsError}) => {
     
     const [isModalOpen, setIsModalOpen] = useState(false) //by default the modal will be closed
-
-    //is there a way we condense these states into one? maybe in an object?
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState("personal")    //by default category is set to personal
@@ -38,14 +36,12 @@ const Header = ({todos, setTodos, setIsError}) => {
     const openModal = () => {
         setIsModalOpen(true);
     }
-
     //handles closing the modal
     const closeModal = () => {
         setIsModalOpen(false)
     }
 
     //handles setting state for title and description.
-    //is there a way to condense these handle functions into one?
     const handleTitleChange = (e) => {
         setTitle(e.target.value)
     }
@@ -53,13 +49,14 @@ const Header = ({todos, setTodos, setIsError}) => {
         setDescription(e.target.value)
     }
 
-    //handles the state for the select field
+    //handles the state for the select field for choosing category
     const handleCategorySelect = (e) => {
         setCategory(e.target.value)
     }
 
     //post data to endpoint /api/create
     //when creating a todo, we'll put all the values in an object then pass the object into this function
+    //we can put this into a custom hook
     const postNewTodo = (data) => {
         fetch('http://localhost:8000/api/create', {
             method: 'POST',
@@ -86,7 +83,7 @@ const Header = ({todos, setTodos, setIsError}) => {
         })
     }
 
-
+    //handles adding a new task
     const handleAddTask = (e) => {
         e.preventDefault();
 
@@ -99,7 +96,8 @@ const Header = ({todos, setTodos, setIsError}) => {
             category: category,
         }
       
-        postNewTodo(newTask);
+        //after preparing the data to be sent to server, we will send a post request
+        postNewTodo(newTask);   
 
         //reset the states after clicking add
         setTitle("")
@@ -111,7 +109,6 @@ const Header = ({todos, setTodos, setIsError}) => {
         <header>
             <h1 className="brand">React To Do</h1>
             <nav>
-
                 {/* This button handles the modal, maybe we can separate this from header */}
                 <button type="button" onClick={openModal}>Add Task</button>
             </nav>
