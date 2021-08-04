@@ -9,8 +9,9 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
     const [query, setQuery] = useState('')
 
     //sorting todo functions
+    //we could make these one liners, but we need to also pass the functions into the sidebar
     const handleAllTodoFilter = () => {
-        setSortBy('')   //set to empty so we can display all todos
+        setSortBy('')
     }
     const handlePersonalTodoFilter = () => {
         setSortBy('personal')
@@ -22,6 +23,7 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
         setSortBy('important')
     }
 
+    //handles the value of the input text for searching
     const handleQuery = (e) => {
         setQuery(e.target.value)
     }
@@ -41,10 +43,10 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
                 <div className="important-sort">
                     <span>Sort By</span>
                     <div className="sort-buttons">
-                        <button onClick={() => handleAllTodoFilter(todos)} type="button">All</button>
-                        <button onClick={() => handlePersonalTodoFilter(todos)} type="button">Personal</button>
-                        <button onClick={() => handleWorkTodoFilter(todos)} type="button">Work</button>
-                        <button onClick={() => handleImportantTodoFilter(todos)} type="button">Important</button>
+                        <button onClick={() => handleAllTodoFilter()} type="button">All</button>
+                        <button onClick={() => handlePersonalTodoFilter()} type="button">Personal</button>
+                        <button onClick={() => handleWorkTodoFilter()} type="button">Work</button>
+                        <button onClick={() => handleImportantTodoFilter()} type="button">Important</button>
                     </div>
                     <p>Search by Keywords</p><input type="text" onChange={handleQuery} value={query} placeholder="search.."></input>
                 </div>
