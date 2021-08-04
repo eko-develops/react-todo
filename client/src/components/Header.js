@@ -114,8 +114,6 @@ const Header = ({todos, setTodos, setIsError}) => {
 
                 {/* This button handles the modal, maybe we can separate this from header */}
                 <button type="button" onClick={openModal}>Add Task</button>
-                <button type="button">Search</button>
-                <div className="user-icon"></div>
             </nav>
 
             {/* The modal 

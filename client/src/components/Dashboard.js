@@ -6,7 +6,7 @@ import { useState } from 'react'
 const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
 
     const [sortBy, setSortBy] = useState('')
-    const [query, setQuery] = useState("")
+    const [query, setQuery] = useState('')
 
     //sorting todo functions
     const handleAllTodoFilter = () => {
@@ -46,12 +46,12 @@ const Dashboard = ({todos, isError, isLoading, deleteTodo}) => {
                         <button onClick={() => handleWorkTodoFilter(todos)} type="button">Work</button>
                         <button onClick={() => handleImportantTodoFilter(todos)} type="button">Important</button>
                     </div>
-                    <p>Search by Title</p><input type="text" onChange={handleQuery} value={query} placeholder="search.."></input>
+                    <p>Search by Keywords</p><input type="text" onChange={handleQuery} value={query} placeholder="search.."></input>
                 </div>
                 {/* End sorting buttons */}
                 <div className="sub-wrapper">
                     {isLoading && <div className="loading">Loading.....</div>}
-                    {isError ? "Could not find any records..." : <Cards deleteTodo={deleteTodo} sortBy={sortBy} todos={todos} />}
+                    {isError ? "Could not find any records..." : <Cards query={query} deleteTodo={deleteTodo} sortBy={sortBy} todos={todos} />}
                 </div>
             </div>  {/* End center dashboard */}        
         </div>  {/* End dashboard wrapper */}

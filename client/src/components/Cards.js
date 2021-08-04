@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cards = ({todos, deleteTodo, sortBy}) => {
+const Cards = ({todos, deleteTodo, sortBy, query}) => {
 
     const todoList = todos.filter((todo) => {
         if(sortBy){ //if sortBy is set we'll use the "key" for the sort
@@ -8,7 +8,8 @@ const Cards = ({todos, deleteTodo, sortBy}) => {
         } else {//if sort not set just display all
             return todo
         }
-    }).map((todo) => //create the structure of each todo after filtering
+    }).filter((todo) => todo.title.includes(query) || todo.description.includes(query)  //we'll filter by query here. should be able to search whether we are filtering by category or not
+        ).map((todo) => //create the structure of each todo after filtering
     <div className="card" key={todo._id}> 
         <div className="card-header">
             <h4 className="card-category"> {todo.category} </h4>
