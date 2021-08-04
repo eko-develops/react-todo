@@ -17,7 +17,9 @@
 
 ## Description
 
-Creating ReadMe's for your Github repository can be tedious.  I hope this template can save you time and effort as well as provide you with some consistency across your projects.
+This project was created to practice using the MERN (MongoDB, Express, React, NodeJS) stack. The app is a todo tracker that reads, deletes, and creates new todos from a MongoDB database. The app works by sending requests to endpoints on the Express server to perform our database tasks. The endpoints that currently exist are: a GET request to get all todos, a DELETE request to delete a todo, and a POST request to create new todos and add them to the database.
+
+From the app, you can add new todos and they will be listed instantly and added into the database. There is a sidebar and also buttons that you can use to sort the todos depending on their category. You will also be able to filter through the todos by searching from keywords in the input field. The app allows the todos to be sorted by category and keywords at the same time.
 
 #### Technologies
 
@@ -68,6 +70,15 @@ cd react-to-do/client
 npm start
 ```
 The project will load and you can start playing around with it!
+
+[Back To The Top](#react-to-do-tracker)
+
+---
+
+## To do
+
+- Clean up styling
+- Add update functionality to each todo
 
 [Back To The Top](#react-to-do-tracker)
 
