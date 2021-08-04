@@ -10,6 +10,7 @@
 
 - [Description](#description)
 - [How To Use](#how-to-use)
+- [To Do](#to-do)
 - [References](#references)
 - [Author Info](#author-info)
 
@@ -75,7 +76,7 @@ The project will load and you can start playing around with it!
 
 ---
 
-## To do
+## To Do
 
 - Clean up styling
 - Add update functionality to each todo
